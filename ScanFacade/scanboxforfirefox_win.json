@@ -1,0 +1,7 @@
+{
+  "name": "veiny.scanbox.forfirefox",
+  "description": "ScanBox",
+  "path": "D:/Project/ScanBox/ScanForIE/x64/Debug/ScanBoxChromeExtension.exe",
+  "type": "stdio",
+  "allowed_extensions": ["veiny_yxy@hotmail.com"]
+}

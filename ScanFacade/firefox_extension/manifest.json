@@ -1,0 +1,28 @@
+{
+  "name": "SacnBox Firefox Extension",
+  "version": "1.0",
+  "manifest_version": 2,
+  "description": "Communicate with ScanBox.",
+  "icons": {
+    "128": "icon-128.png"
+  },
+  
+  "browser_specific_settings": {
+	"gecko": {
+		"id": "veiny_yxy@hotmail.com",
+		"strict_min_version": "49.0"
+	}
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://localhost/*"],
+      "js": ["content_scripts/export.js"]
+    }
+  ],
+  "background": {
+      "scripts": ["background.js"]
+    },
+  "permissions": [
+	"nativeMessaging"
+  ]
+}

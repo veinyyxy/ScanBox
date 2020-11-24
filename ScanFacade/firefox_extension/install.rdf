@@ -1,0 +1,7 @@
+<em:targetApplication>
+ <Description>
+  <em:id>{27BBD0A7-0820-4F6C-8D4A-92BF01F4F65A}</em:id> <!--Firefox-->
+  <em:minVersion>1.5</em:minVersion>
+  <em:maxVersion>3.0.*</em:maxVersion>
+ </Description>
+</em:targetApplication>

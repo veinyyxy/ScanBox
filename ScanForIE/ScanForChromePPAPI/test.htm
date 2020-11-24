@@ -1,0 +1,18 @@
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" Content="Microsoft Visual Studio">
+<TITLE></TITLE>
+</HEAD>
+<script	type="text/javascript">
+var targetExtensionId = "hnpfkggfnomfockgooccggjdfjpeeijh";
+chrome.runtime.sendMessage(targetExtensionId, {type: 'MsgFromPage', msg: 'Hello, I am page~'}, function(response) {
+  console.log(response);
+});
+
+alert(chrome.runtime);
+</script>
+
+<BODY>
+<button name='send'>sendMessage</button>
+</BODY>
+</HTML>

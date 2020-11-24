@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>图片缩略图切换</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
+  <link rel="stylesheet" href="css/img-toggle.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap-theme.min.css" >
+  <link rel="stylesheet" href="css/operation-btn.css">
+  <link rel="stylesheet" href="css/jquery.Jcrop.css" type="text/css" />
+  <link rel="stylesheet" href="css/jquery.bootstrap-touchspin.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/checkbox-beauty.css" type="text/css">
+  <link rel="stylesheet" href="css/dragging.css" type="text/css">
+</head>
+
+<body>
+<object ID="sc" CLASSID="CLSID:A65A691D-D673-41B1-BA19-62123E7C4D72" ></object>
+<div class="row col-md-12" style="background:#3f92f3">
+	<select class="form-control col-md-offset-2" style="display:inline;width:150px;background-color: #C6DFFB;" id="deviceSelect"></select>
+
+	<button type="button" id="newScan" class="btn" style="width:150px">
+		<i class="icon" style="background-image:url(imgs/newScan.png)"></i><span style='color:white;'> 新扫描</span>
+	</button>
+	<button type="button" id="recoverScan" class="btn" style="width:150px" data-toggle="modal" >
+		<i class="icon" style="background-image:url(imgs/recoverScan.png)"></i><span style='color:white;'> 覆盖扫描</span>
+	</button>
+	<button type="button" id="insertScan" class="btn" style="width:150px">
+		<i class="icon" style="background-image:url(imgs/insertScan.png)"></i><span style='color:white;'> 插入扫描</span>
+	</button>
+	<button type="button" id="square" class="btn" style="width:150px" data-toggle="modal" >
+		<i class="icon" style="background-image:url(imgs/picCheck.png)"></i><span style='color:white;'> 图像矫正</span>
+	</button>
+	<!--<button type="button" id="load" class="btn" style="width:150px">
+		<i class="icon" style="background-image:url(imgs/load.png)"></i><span style='color:white;'> 批次加载</span>
+	</button>-->	
+	<button type="button" id="uploadLocalImg" class="btn" style="width:150px">
+		<i class="icon" style="background-image:url(imgs/picture.png)"></i><span style='color:white;'> 插入本地图像</span>
+	</button>
+	<button type="button" id="delete" class="btn" style="width:100px" data-toggle="modal">
+		<i class="icon" style="background-image:url(imgs/delete.png)"></i><span style='color:white;'> 删除</span>
+	</button>
+	<button type="button" id="commit" class="btn" style="width:100px">
+		<i class="icon" style="background-image:url(imgs/commit.png)"></i><span style='color:white;'> 提交</span>
+	</button>
+	<!--<button type="button" id="refreshAll" class="btn" style="width:100px">
+		<i class="icon" style="background-image:url(imgs/load.png)"></i><span style='color:white;'> 刷新</span>
+	</button>-->
+</div>
+<style>
+label.error {
+	color: red;
+}
+</style>
+<div class="row col-md-12">
+	<div class="img-toggle-wrapp" id="imgToggle">
+		<div id="dlgTest" class="dialog">
+            <div class="dialog-title"></div>
+			<ul class="operation-btns">
+				<li><span class="btn-icon-denoise" title="锐化"></span></li>
+				<li><span class="btn-icon-mosaic" title="马赛克"></span></li>
+				<li><span class="btn-icon-rotate" title="旋转"></span></li>
+				<li><span class="btn-icon-watermark" title="水印"></span></li>
+				<li><span class="btn-icon-crop" title="裁剪"></span></li>
+				<li><span class="btn-icon-remark" title="备注"></span></li>
+			</ul>
+		</div>
+		<div class="big-img-container"></div>
+		<div class="thumbnail-scroll">
+			<div class="top-btn"></div>
+			<div class="scroll-lists"></div>
+			<div class="paganation">
+				<input type="number" id="currentImgIndex"/>
+				<span> / </span>
+				<span id="totalImgLength">120</span>
+			</div>
+			<div class="bottom-btn"></div>
+		</div>
+	</div>
+</div>
+<!--图像校验模态框-->
+<div class="modal fade" id="squareDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">图像矫正</h4>
+            </div>
+			<div class="modal-body">
+				<form id="square-form" role="form">
+				
+					<!--<div class="checkbox">
+						<label><input id="square-check" type="checkbox"> 图像自动矫正</label><input class="form-control">
+					</div>
+					<div class="checkbox"><label><input type="checkbox"> 图像清晰度校验</label>
+						<input type="text" class="form-control" style="display:inline;width:100px">像素
+					</div>-->
+					<input id="squareParam" type="text" value="0" name="squareParam">
+				</form>
+			</div>			
+            <div class="modal-footer">
+				<button type="button" id="square-apply" class="btn" style="width:120px;background:#3f92f3">
+					<span style='color:white;'>确定</span>
+				</button>
+				<!--<button type="button" id="square-apply-checked" class="btn" style="width:120px;background:#3f92f3">
+					<span style='color:white;'>应用选定</span>
+				</button>-->
+            </div>
+        </div>
+    </div>
+</div>
+<!--备注模态框-->
+<div class="modal fade" id="remarkDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">备注</h4>
+            </div>
+			<div class="modal-body">
+				<textarea class="form-control" rows="4" id="remark-textarea"></textarea>
+			</div>
+			<div class="modal-footer">
+				<button type="button" data-dismiss="modal" id="remark-apply" class="btn" style="width:120px;background:#3f92f3">
+					<span style='color:white;'>确定</span>
+				</button>
+            </div>
+		</div>
+	</div>
+</div>
+<!--水印模态框-->
+<div class="modal fade" id="watermarkDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">水印</h4>
+            </div>
+			<div class="modal-body">
+			<form id="watermark-form" role="form">
+				<div class="form-group">
+					<label for="posX" class="label-control">水印位置:X </label><input id="posX" type="text" size="4" name="posX" class="form-control" style="display:inline;width:100px" readonly="readonly">
+					<label for="posY" class="label-control"> Y </label><input id="posY" type="text" size="4" name="posY" class="form-control" style="display:inline;width:100px" readonly="readonly">
+					<button type="button" id="watermark-position" class="btn" style="width:120px;background:#3f92f3">
+						<span style='color:white;'>选择坐标</span>
+					</button>
+				</div>
+				<div class="form-group">
+					<label>水印形式:</label>
+					<label class="radio-inline">
+						<input type="radio" name="optionsRadiosinline" id="watermark-word-radio" value="option1" checked> 文字
+					</label>
+					<label class="radio-inline">
+						<input type="radio" name="optionsRadiosinline" id="watermark-image-radio"  value="option2"> 图片
+					</label>
+				</div>
+				<div id="watermark-font-div">
+					<div class="form-group">
+						<label>字体设置:</label>
+						<button type="button" id="watermark-font" class="btn" style="width:120px;background:#3f92f3">
+							<span style='color:white;'>微软雅黑 36</span>
+						</button>
+						<button type="button" id="watermark-color" style="width:120px;background:#3f92f3;display:inline-block;padding:6px 12px;border:1px solid transparent;border-radius:4px;vertical-align:middle">
+							<span style='color:white;'>选择颜色</span>
+						</button>
+					</div>
+					<div class="form-group">
+						<!--<label>旋转角度:</label>-->
+						<input id="watermarkTextRotate" type="text" value="0" name="watermarkTextRotate" >
+					</div>
+					<div class="form-group">
+						<label>水印内容:</label>
+						<textarea class="form-control" rows="4" id="watermarkText" name="watermarkText"></textarea>
+					</div>
+					<input id="hidden-font" style="display:none" value="微软雅黑|36|0|0|0">
+					<input id="hidden-color" style="display:none" value="4282356467">
+					<!--<input id="hidden-font" value="微软雅黑|36|0|0|0">
+					<input id="hidden-color" value="4282356467">-->
+				</div>
+				<div id="watermark-image-div" style="display:none">
+					<div class="form-group">
+						<label>本地文件:</label>
+						<input type="text" class="form-control" style="display:inline;width:350px" id="watermarkImg" name="watermarkImg">
+						<button type="button" id="watermark-choise-file" class="btn" style="width:120px;background:#3f92f3">
+							<span style='color:white;'>选择</span>
+						</button>
+					</div>
+					<!--<div class="form-group col-md-6 col-md-offset-3" id="qwerty" style="display:none">
+						<img id="watermark-thumbnail" src="" alt="..." style="width:100px;height:100px">
+					</div>-->
+					<div class="form-group">
+						<label>插入及旋转点:</label>
+						<label class="radio-inline">
+							<input type="radio" name="watermark-point" id="watermark-point-leftup" checked> 左上
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="watermark-point" id="watermark-point-center" > 中心
+						</label>
+					</div>
+					<div class="form-group">
+						<!--<label>旋转角度:</label>-->
+						<input id="watermarkImgRotate" type="text" value="0" name="watermarkImgRotate" >
+					</div>
+				</div>
+			</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" id="watermark-apply" class="btn" style="width:120px;background:#3f92f3">
+					<span style='color:white;'>确定</span>
+				</button>
+            </div>
+		</div>
+	</div>
+</div>
+<!--旋转模态框-->
+<div class="modal fade" id="rotateDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">旋转</h4>
+            </div>
+			<div class="modal-body">
+				<form id="rotate-form" role="form">
+					<div class="form-group">
+						<!--<label>旋转角度:</label>-->
+						<input id="rotateParam" type="text" value="0" name="rotateParam">
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" id="rotate-apply" class="btn" style="width:120px;background:#3f92f3">
+					<span style='color:white;'>确定</span>
+				</button>
+            </div>
+		</div>
+	</div>
+</div>
+<!--覆盖扫描确认模态框-->
+<div class="modal fade" id="recoverDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">确认</h4>
+            </div>
+			<div class="modal-body">
+				<label>是否确认覆盖当前图像？</label>
+			</div>
+			<div class="modal-footer">
+				<button type="button" data-dismiss="modal" id="recover-apply" class="btn" style="width:120px;background:#3f92f3">
+					<span style='color:white;'>确定</span>
+				</button>
+				<button type="button" data-dismiss="modal" class="btn" style="width:120px;background:#3f92f3">
+					<span style='color:white;'>取消</span>
+				</button>
+            </div>
+		</div>
+	</div>
+</div>
+<!--删除确认模态框-->
+<div class="modal fade" id="deleteDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">确认</h4>
+            </div>
+			<div class="modal-body">
+				<label>是否确认删除选定图像？</label>
+			</div>
+			<div class="modal-footer">
+				<button type="button" data-dismiss="modal" id="delete-apply" class="btn" style="width:120px;background:#3f92f3">
+					<span style='color:white;'>确定</span>
+				</button>
+				<button type="button" data-dismiss="modal" class="btn" style="width:120px;background:#3f92f3">
+					<span style='color:white;'>取消</span>
+				</button>
+            </div>
+		</div>
+	</div>
+</div>
+<!--删除无效模态框-->
+<div class="modal fade" id="deleteInvalidDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">确认</h4>
+            </div>
+			<div class="modal-body">
+				<label>没有选定图像,无法执行删除操作。</label>
+			</div>
+			<div class="modal-footer">
+				<button type="button" data-dismiss="modal" class="btn" style="width:120px;background:#3f92f3">
+					<span style='color:white;'>确定</span>
+				</button>
+            </div>
+		</div>
+	</div>
+</div>
+<!--操作无效模态框-->
+<div class="modal fade" id="operationInvalidDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">确认</h4>
+            </div>
+			<div class="modal-body">
+				<label>没有可用图像,请先执行扫描操作。</label>
+			</div>
+			<div class="modal-footer">
+				<button type="button" data-dismiss="modal" class="btn" style="width:120px;background:#3f92f3">
+					<span style='color:white;'>确定</span>
+				</button>
+            </div>
+		</div>
+	</div>
+</div>
+<!--裁剪确认模态框-->
+<div class="modal fade" id="cropDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">确认</h4>
+            </div>
+			<div class="modal-body">
+				<label>是否确认裁剪？</label>
+			</div>
+			<div class="modal-footer">
+				<button type="button" data-dismiss="modal" id="crop-apply" class="btn" style="width:120px;background:#3f92f3">
+					<span style='color:white;'>确定</span>
+				</button>
+				<button type="button" data-dismiss="modal" class="btn" style="width:120px;background:#3f92f3">
+					<span style='color:white;'>取消</span>
+				</button>
+            </div>
+		</div>
+	</div>
+</div>
+<!--遮盖层模态框-->
+<div class="modal fade" id="loadingModal">
+	<div style="width: 200px;height:20px; z-index: 20000; position: absolute; text-align: center; left: 50%; top: 50%;margin-left:-100px;margin-top:-10px">
+	</div>
+</div>
+<script src="js/jquery-1.9.1.min.js"></script>
+<!--[if IE 8]>
+<script src="js/jquery-1.9.1.min.js"></script>
+<![endif]-->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="js/jquery.Jcrop.js"></script>
+<script src="js/jquery.bootstrap-touchspin.min.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+<script src="js/dragging.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/scan-box.js"></script>
+<script>
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="array_output.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="audio.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="audio_config.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="audio_input_dev.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="buffer_dev.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="core.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="crypto_dev.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cursor_control_dev.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="device_ref_dev.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="directory_entry.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="file_chooser_dev.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="file_io.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="file_ref.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="file_system.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="find_dev.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="font_dev.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="fullscreen.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics_2d.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics_2d_dev.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics_3d.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics_3d_client.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="host_resolver.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="image_data.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ime_input_event_dev.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="input_event.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="instance.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="instance_handle.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lock.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="memory_dev.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="message_loop.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="module.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mouse_cursor.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mouse_lock.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="net_address.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="network_list.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="network_monitor.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="network_proxy.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="paint_aggregator.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="paint_manager.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ppp_entrypoints.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="printing_dev.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="rect.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="resource.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="resource_array_dev.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="scriptable_object_deprecated.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="scrollbar_dev.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="selection_dev.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="simple_thread.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="socket_dev.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tcp_socket.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="text_input_controller.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="text_input_dev.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="truetype_font_dev.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="udp_socket.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="url_loader.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="url_request_info.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="url_response_info.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="url_util_dev.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="var.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="var_array.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="var_array_buffer.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="var_dictionary.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="var_resource_dev.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="video_capture_client_dev.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="video_capture_dev.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="video_decoder_client_dev.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="video_decoder_dev.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="view.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="view_dev.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="websocket.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="websocket_api.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="widget_client_dev.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="widget_dev.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="zoom_dev.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+    <PAPPER_HOME>D:\nacl_sdk\naclsdk_win\pepper_33</PAPPER_HOME>
+  </PropertyGroup>
+  <PropertyGroup>
+    <IncludePath>$(PAPPER_HOME)\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(PAPPER_HOME)\lib\win_x86_64_host\Release;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <Link>
+      <AdditionalDependencies>ppapi_cpp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <BuildMacro Include="PAPPER_HOME">
+      <Value>$(PAPPER_HOME)</Value>
+    </BuildMacro>
+  </ItemGroup>
+</Project>

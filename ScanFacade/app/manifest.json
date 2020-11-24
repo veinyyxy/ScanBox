@@ -1,0 +1,24 @@
+{
+  "name": "SacnBox Chrome Extension",
+  "version": "1.0",
+  "manifest_version": 2,
+  "description": "Communicate with ScanBox.",
+  "key":"hnpfkggfnomfockgooccggjdfjpeeijh",
+  "app": {
+    "launch": {
+      "local_path": "main.html"
+    }
+  },
+  "icons": {
+    "128": "icon-128.png"
+  },
+  "background": {
+      "scripts": ["background.js"]
+    },
+  "externally_connectable": {
+  "matches": ["*://localhost/test.htm"]
+  },
+  "permissions": [
+    "nativeMessaging"
+  ]
+}

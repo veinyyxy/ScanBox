@@ -1,0 +1,9 @@
+{
+  "name": "veiny.scanbox.forchrome",
+  "description": "ScanBox",
+  "path": "D:/Project/ScanBox/ScanForIE/x64/Debug/ScanBoxChromeExtension.exe",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://bkemkcjhgfgodgbbhmkpefeaibolebme/"
+  ]
+}
